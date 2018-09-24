@@ -12,7 +12,7 @@ import {
 } from './dialog-loader'
 
 import 'bootstrap/dist/css/bootstrap.css'
-import './main.css'
+import '../css/main.css'
 
 const bsCDN = 'https://unpkg.com/bootstrap/js/dist/'
 const popperCDN = 'https://unpkg.com/popper.js/dist/umd/popper.js'
