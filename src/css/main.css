@@ -14,10 +14,6 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.bxs-heart {
-  color: #ff0000; /* red */
-}
-
 .github-link {
   position: absolute;
   right: 0;
@@ -26,4 +22,8 @@ body {
 
 .github-link:hover {
   opacity: 1;
+}
+
+.text-red {
+  color: #ff0000;
 }
