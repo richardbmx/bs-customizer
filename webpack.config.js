@@ -5,6 +5,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WriteFilePlugin = require('write-file-webpack-plugin')
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin')
 
 let fileName = 'bs-customizer.min'
 const paths = {
@@ -13,6 +15,8 @@ const paths = {
 }
 
 module.exports = (env, args) => {
+  const prod = args.mode === 'production'
+
   const conf = {
     entry: './src/js/index.js',
     output: {
@@ -36,7 +40,10 @@ module.exports = (env, args) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src/index.html'),
         filename: path.resolve(__dirname, 'index.html'),
-      })
+        cache: prod,
+      }),
+      new HtmlWebpackInlineSVGPlugin(),
+      //new WriteFilePlugin(),
     ],
     module: {
       rules: [
@@ -61,24 +68,24 @@ module.exports = (env, args) => {
           ]
         },
         {
-          test: /\.(eot|ttf|woff|woff2)$/,
-          loader: 'file-loader',
-          options: {
-            name: 'fonts/[name].[ext]'
-          }
+          test: /\.(html)$/,
+          use: {
+            loader: 'html-loader',
+          },
         },
         {
-          test: /\.svg/,
-          loader: 'file-loader',
-          options: {
-            name: 'svg/[name].[ext]'
-          }
-        }
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ]
+        },
       ]
     }
   }
 
-  if (args.mode === 'production') {
+  if (prod) {
     conf.optimization = {
       minimizer: [
         new UglifyJsPlugin({

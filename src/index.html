@@ -8,7 +8,7 @@
   <body>
     <div class="github-link d-inline">
       <a class="text-dark" href="https://github.com/Johann-S/bs-customizer">
-        <i class="bx bxl-github bx-md"></i>
+        <img inline src="img/bxl-github.svg">
       </a>
     </div>
     <div class="container">
@@ -149,7 +149,7 @@
         </div>
         <div class="col-12">
           <button id="btnSubmit" type="button" class="btn btn-primary mt-3">
-            <i class="bx bx-cog"></i> Build
+            <img inline src="img/bx-cog.svg"> Build
           </button>
         </div>
       </div>
@@ -157,9 +157,29 @@
     <footer class="footer bg-light w-100">
       <div class="container">
         <p class="text-muted text-center mb-0">
-          Made with <i class="bx bxs-heart"></i> by <a href="https://github.com/Johann-S">Johann-S</a>
+          Made with <img inline src="img/bxs-heart.svg"> by <a href="https://github.com/Johann-S">Johann-S</a>
         </p>
       </div>
     </footer>
+    <div class="modal fade dialog-loader" tabindex="-1" role="dialog" data-backdrop="static">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header d-none">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div id="loader">
+              <!-- todo add loader -->
+            </div>
+            <p id="loadingStatus" class="mt-3 mb-0"></p>
+            <a id="generatedLink" class="btn btn-primary d-none">
+              <img inline src="img/bx-download.svg"> Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
